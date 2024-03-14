@@ -1,0 +1,25 @@
+name: Action  # Use tags to trigger the action
+on:
+  workflow_dispatch:
+    inputs:
+      statement:
+        description: Question
+        required: true
+        default: How is the weather?
+jobs:
+  cron:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout & Set Environment Variables
+        uses: actions/checkout@v3
+        
+      - name: Install dependencies
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip' 
+
+      - name: Set up environment variables
+        run: |
+          python3 action.py ${{ inputs.statement }}
