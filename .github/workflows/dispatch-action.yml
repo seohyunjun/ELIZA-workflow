@@ -17,7 +17,7 @@ jobs:
       - name: Qustion ELIZA ${{ inputs.statement }} 
         run: |
           cd $GITHUB_WORKSPACE
-          python action.py ${{ inputs.statement }} >> {{ secrets.ELIZA_ENSWER }}
+          python action.py --statement ${{ inputs.statement }} >> {{ secrets.ELIZA_ENSWER }}
 
       - name: Answer ELIZA 
         run: |
