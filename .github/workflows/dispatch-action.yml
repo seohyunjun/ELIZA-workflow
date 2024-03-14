@@ -14,16 +14,10 @@ jobs:
       - name: Checkout & Set Environment Variables
         uses: actions/checkout@v3
         
-      - name: Install Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
-          cache: 'pip' 
-    
       - name: Qustion ELIZA ${{ inputs.statement }} 
         run: |
           cd $GITHUB_WORKSPACE
-          python3 action.py ${{ inputs.statement }} >> {{ secrets.ELIZA_ENSWER }}
+          python action.py ${{ inputs.statement }} >> {{ secrets.ELIZA_ENSWER }}
 
       - name: Answer ELIZA 
         run: |
