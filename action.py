@@ -144,7 +144,7 @@ def talk_to_me():
         print(analyze(statement))
 
 if __name__ == "__main__":
-    parse = argparse.ArgumentParser(description='Process some integers.')
+    parser = argparse.ArgumentParser(description='Process some integers.')
     parser.add_argument('--statement', dest='question', default="How is the weather?")
     
     args = parser.parse_args()
