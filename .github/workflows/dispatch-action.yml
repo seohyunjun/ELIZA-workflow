@@ -17,11 +17,11 @@ jobs:
       - name: Qustion ELIZA ${{ inputs.statement }} 
         run: |
           cd $GITHUB_WORKSPACE
-          python action.py --statement ${{ inputs.statement }} >> ${{ secrets.ELIZA_ANSWER }}
+          python action.py --statement ${{ inputs.statement }} >> $GITHUB_ENV
 
-      - name: ELIZA Answer ${{ secrets.ELIZA_ANSWER }} 
+      - name: ELIZA Answer $GITHUB_ENV
         run: |
           echo "::group:: Result"
           echo "Q: ${{ inputs.statement }}"
-          echo "A: ${{ secrets.ELIZA_ANSWER }}"
+          echo "A: $GITHUB_ENV"
       
