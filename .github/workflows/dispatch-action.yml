@@ -19,9 +19,9 @@ jobs:
           cd $GITHUB_WORKSPACE
           python action.py --statement ${{ inputs.statement }} >> answer_sheet.txt
 
-      - name: Answer ELIZA 
+      - name: ELIZA Answer $(cat answer_sheet.txt) 
         run: |
           echo "::group:: Result"
           echo "Q: ${{ inputs.statement }}"
-          echo "A: (cat answer_sheet.txt)"
+          echo "A: $(cat answer_sheet.txt)"
       
