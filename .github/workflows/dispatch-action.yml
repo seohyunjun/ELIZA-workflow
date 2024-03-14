@@ -5,7 +5,7 @@ on:
       statement:
         description: Question
         required: true
-        default: How is the weather?
+        default: "How is the weather?"
 jobs:
   app-build: 
     name: ELIZA build on Ubuntu-latest
