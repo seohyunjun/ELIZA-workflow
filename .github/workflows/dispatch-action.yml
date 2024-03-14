@@ -17,11 +17,11 @@ jobs:
       - name: Qustion ELIZA ${{ inputs.statement }} 
         run: |
           cd $GITHUB_WORKSPACE
-          python action.py --statement ${{ inputs.statement }} >> $GITHUB_ENV
+          python action.py --statement ${{ inputs.statement }} >> answer_sheet.txt
 
       - name: ELIZA Answer $GITHUB_ENV
         run: |
           echo "::group:: Result"
           echo "Q: ${{ inputs.statement }}"
-          echo "A: $GITHUB_ENV"
+          echo "A: $(cat answer_sheet.txt)"
       
