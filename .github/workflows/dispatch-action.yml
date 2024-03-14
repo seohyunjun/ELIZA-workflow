@@ -17,11 +17,11 @@ jobs:
       - name: Qustion ELIZA ${{ inputs.statement }} 
         run: |
           cd $GITHUB_WORKSPACE
-          python action.py --statement ${{ inputs.statement }} >> {{ secrets.ELIZA_ENSWER }}
+          python action.py --statement ${{ inputs.statement }} >> answer_sheet.txt
 
       - name: Answer ELIZA 
         run: |
           echo "::group:: Result"
           echo "Q: ${{ inputs.statement }}"
-          echo "A: ${{ secrets.ELIZA_ENSWER }}"
+          echo "A: (cat answer_sheet.txt)"
       
