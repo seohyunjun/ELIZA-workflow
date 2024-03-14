@@ -7,19 +7,27 @@ on:
         required: true
         default: How is the weather?
 jobs:
-  cron:
+  app-build: 
+    name: ELIZA build on Ubuntu-latest
     runs-on: ubuntu-latest
-    
     steps:
       - name: Checkout & Set Environment Variables
         uses: actions/checkout@v3
         
-      - name: Install dependencies
+      - name: Install Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip' 
-
-      - name: Set up environment variables
+    
+      - name: Qustion ELIZA ${{ inputs.statement }} 
         run: |
-          python3 action.py ${{ inputs.statement }}
+          cd $GITHUB_WORKSPACE
+          python3 action.py ${{ inputs.statement }} >> {{ secrets.ELIZA_ENSWER }}
+
+      - name: Answer ELIZA 
+        run: |
+          echo "::group:: Result"
+          echo "Q: ${{ inputs.statement }}"
+          echo "A: ${{ secrets.ELIZA_ENSWER }}"
+      
